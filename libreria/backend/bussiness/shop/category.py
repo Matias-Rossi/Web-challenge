@@ -1,0 +1,7 @@
+from unicodedata import category
+
+
+class Category:
+    def __init__(self, name: str, description: str):
+        self.name = name
+        self.description = description

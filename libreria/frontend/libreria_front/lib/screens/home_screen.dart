@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:libreria_front/models/news.dart';
+import 'package:libreria_front/providers/news_provider.dart';
 import 'package:libreria_front/widgets/navbar.dart';
 
 import 'package:libreria_front/widgets/banner_grid.dart';
+import 'package:libreria_front/widgets/news_list.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/book_categories.dart';
@@ -43,6 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const Divider(indent: 50.0),
               CategoriesList(
                   categories: Provider.of<BookCategories>(context).categories),
+              const Divider(indent: 50.0),
+              NewsList(
+                  news: Provider.of<NewsProvider>(context).news, listSize: 3),
               SizedBox(
                   height: isWide
                       ? MediaQuery.of(context).size.height * 0.6

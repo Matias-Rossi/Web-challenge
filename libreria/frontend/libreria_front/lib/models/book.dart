@@ -14,13 +14,15 @@ class Book extends Product {
     required id,
     required name,
     required description,
-    required image,
+    required thumbnail,
     required price,
+    required images,
   }) : super(
           description: description,
           id: id,
-          image: image,
+          thumbnail: thumbnail,
           name: name,
           price: price,
+          images: images,
         );
 }

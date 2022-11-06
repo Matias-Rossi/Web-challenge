@@ -1,8 +1,8 @@
 import 'package:adaptive_navbar/adaptive_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:libreria_front/screens/home_screen.dart';
+import 'package:libreria_front/utils/router.dart';
 
 class NavBar extends StatefulWidget with PreferredSizeWidget {
   final bool isWide;
@@ -23,15 +23,22 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return widget.isWide
         ? AdaptiveNavBar(
+            onTitleTapped: () => Navigator.of(context)
+                .pushReplacementNamed(HomeScreen.routeName),
             navBarItems: [
               NavBarItem(
                 text: "Inicio",
                 onTap: () {
-                  Navigator.of(context).pushReplacementNamed("/");
+                  //Navigator.of(context).pushReplacementNamed("/");
+                  FRouter.router.navigateTo(context, "/home");
                 },
               ),
               NavBarItem(
                 text: "Buscar",
+                onTap: () {
+                  //Navigator.of(context).pushReplacementNamed("/search");
+                  FRouter.router.navigateTo(context, "/search");
+                },
               ),
               NavBarItem(
                 text: "Ubicaciones",

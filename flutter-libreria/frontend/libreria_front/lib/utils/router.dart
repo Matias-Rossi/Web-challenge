@@ -33,7 +33,6 @@ class Routes {
   static String productDetail = "/product";
 
   static void configureRoutes(FluroRouter router) {
-    print('Configuring routes');
     router.define(
       root,
       transitionType: TransitionType.none,

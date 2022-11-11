@@ -1,0 +1,19 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Styles */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}

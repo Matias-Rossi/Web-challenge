@@ -10,7 +10,9 @@ class Category(Base):
     name = Column(String(50), nullable=False)
     description = Column(String(500), nullable=False)
     products = relationship("Product", back_populates="category")
+    thumbnail = Column(String(150), nullable=False)
 
-    def __init__(self, name: str, description: str):
+    def __init__(self, name: str, description: str, thumbnail: str):
         self.name = name
         self.description = description
+        self.thumbnail = thumbnail

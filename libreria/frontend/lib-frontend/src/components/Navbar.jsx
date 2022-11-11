@@ -3,7 +3,7 @@ import { Link, useMatch, useResolvedPath, NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useMediaQuery } from "react-responsive";
 
-function Navbar() {
+function Navbar({ toggle }) {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const nav_style = {
     backgroundColor: "#333",
@@ -11,7 +11,7 @@ function Navbar() {
     display: "flex",
     justifyContent: "space-between",
     gap: "2rem",
-    padding: "0 1rem",
+    padding: "0.5rem 1rem",
     alignItems: "stertch",
   };
 
@@ -22,10 +22,10 @@ function Navbar() {
         className="site-title text-inherit visited:text-white text-4xl items-center h-full flex"
         style={{font_family: "Sora, sans-serif"}}
       >
-        &lt;&gt;
+        &lt;/&gt;
       </Link>
       <ul className="p-0 m-0 list-none flex gap-4">
-        {isMobile && <FaBars className="block absolute top-0 right-0 text-3xl cursor-pointer" style={{transform: "translate(-20%,20%)"}}/>}
+        {isMobile && <FaBars className="block absolute top-0 right-0 text-3xl cursor-pointer" style={{transform: "translate(-40%,40%)"}} onClick={toggle}/>}
         {!isMobile && (
           <>
             <NavbarButton children={"Inicio"} to="/" />

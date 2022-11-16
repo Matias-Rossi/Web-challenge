@@ -26,7 +26,7 @@ function NewsCarousel() {
         transitionTime: 1000,
         swipeScrollTolerance: 5,
         ariaLabel: "ariaLabel",
-      }} className="max-h-"
+      }} className="max-h- mb-3"
     >
       <div key="1">
         <img className="relative text-center text-white" src="https://cdn.elearningindustry.com/wp-content/uploads/2016/05/top-10-books-every-college-student-read-1024x640.jpeg"/>

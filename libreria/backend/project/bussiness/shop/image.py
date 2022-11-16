@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Float, Boolean
-from sqlalchemy.ext.declarative import declarative_base, relationship
+from ..persistence.base import Base
+from sqlalchemy.orm import relationship
 
-Base = declarative_base()
 
 class Image(Base):
     __tablename__ = 'images'

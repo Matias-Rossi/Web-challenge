@@ -1,11 +1,12 @@
 import React from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
+import HorizontalDivider from "./HorizontalDivider";
 
 function CategoryList() {
   return (
     <>
-      <hr className=" h-0.5 bg-gray-500 mt-1" />
-      <div className="mt-5 text-start">
+      <HorizontalDivider/>
+      <div className="mt-5 text-start mb-3">
         <h2 className="my-3 ml-2 font-bold">Categorías</h2>
         <ScrollMenu>
           <CategoryCard

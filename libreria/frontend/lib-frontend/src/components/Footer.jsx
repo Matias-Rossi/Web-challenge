@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className='flex flex-col w-full bg-blue-800 text-white text-center pt-2'>
+    <footer className='flex flex-col w-full bg-green-800 text-white text-center pt-2'>
         <h1 className='m-0 mb-2'>&lt;/&gt;</h1>
         <p className='text-gray-400'>Copyright &copy; 2022 La Librería SRL</p>
         <div className='flex justify-evenly my-2'>

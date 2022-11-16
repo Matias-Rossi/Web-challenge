@@ -5,18 +5,9 @@ import { useMediaQuery } from "react-responsive";
 
 function Navbar({ toggle }) {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  const nav_style = {
-    backgroundColor: "#333",
-    color: "white",
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "2rem",
-    padding: "0.5rem 1rem",
-    alignItems: "stertch",
-  };
 
   return (
-    <nav style={nav_style}>
+    <nav className="text-white flex justify-between gap-8 py-2 px-4 items-stretch bg-green-700">
       <Link
         to="/"
         className="site-title text-inherit visited:text-white text-4xl items-center h-full flex"

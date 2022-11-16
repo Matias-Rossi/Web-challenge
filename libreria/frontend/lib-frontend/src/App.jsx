@@ -7,6 +7,7 @@ import "./normalize.css";
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ function App() {
   }
 
   return (
-    <div className="relative min-h-full">
+    <>
       <Navbar toggle={toggle} />
       <Sidebar isOpen={isOpen} toggle={toggle}/>
       
@@ -25,10 +26,11 @@ function App() {
           <Route path="/" element={<Home/>}/>
           {/* <Route path="/busqueda" element={<Search/>}/> */}
           <Route path="/contacto" element={<Contact/>}/>
+          <Route path="/producto/:id" element={<ProductDetailPage/>}/> {/* TODO */}
         </Routes>
       </div>
       <Footer/>
-    </div>
+    </>
   );
 }
 

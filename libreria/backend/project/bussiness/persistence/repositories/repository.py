@@ -15,28 +15,31 @@ class Repository:
     def createAndAdd(self, **kwargs):
         instance = self._class(**kwargs)
         self.session.add(instance)
+        self.session.commit()
         return instance
 
     def addAll(self, instances):
         self.session.add_all(instances)
+        self.session.commit()
         return instances
 
     def add(self, instance):
         self.session.add(instance)
+        self.session.commit()
         return instance
 
     def update(self, instance):
         self.session.update(instance)
+        self.session.commit()
         return instance
 
     def delete(self, instance):
         self.session.delete(instance)
+        self.session.commit()
         return instance
 
     def deleteById(self, id):
         instance = self.session.get(id=id)
         self.session.delete(instance)
-        return instance
-
-    def commit(self):
         self.session.commit()
+        return instance

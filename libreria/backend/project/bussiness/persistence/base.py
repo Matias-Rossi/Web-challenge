@@ -5,6 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # Create Base
 
 Base = declarative_base()
+print("[LOG]: Base created")
 
 # Create engine and metadata_obj
 

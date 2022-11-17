@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Float, Boolean
-from ..persistence.base import Base
+from ..persistence.base import Base, metadata_obj
 from sqlalchemy.orm import relationship
 from .category import Category
 from .author import book_author
@@ -8,13 +8,14 @@ from .image import Image
 
 class Product(Base):
     __tablename__ = 'products'
-
+    Base.metadata
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False)
     price = Column(Float, nullable=False)
     promo_price = Column(Float, nullable=True)
     description = Column(String(500), nullable=False)
-    category = Column(Integer, ForeignKey('categories.id'), nullable=False)
+    category = relationship("Category", back_populates="products")
+    category_id = Column(Integer, ForeignKey('categories.id'), nullable=False)
     stock = Column(Integer, nullable=False)
     thumbnail = Column(String(150), nullable=False)
     images = relationship('Image', backref='product', lazy=True)
@@ -36,11 +37,26 @@ class Product(Base):
         self.thumbnail = thumbnail
         self.images = images
         self.active = active
+        
+    def __to_dict__(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "price": self.price,
+            "promo_price": self.promo_price,
+            "description": self.description,
+            "category": self.category.__to_dict__(),
+            "stock": self.stock,
+            "thumbnail": self.thumbnail,
+            "images": self.images,
+            "active": self.active
+        }
 
 
 
 class Book(Product):
     #__tablename__ = 'books'
+    Base.metadata
     __mapper_args__ = {
         "polymorphic_identity": "book",
     }
@@ -77,3 +93,11 @@ class Book(Product):
         self.pages = pages
         self.publishing_date = publishing_date
         self.isbn = isbn
+
+    def __to_dict__(self):
+        return super().__to_dict__() | {
+            "authors": self.authors,
+            "editorial": self.editorial,
+            "collection": self.collection,
+            "pages": self.pages,
+        }

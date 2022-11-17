@@ -1,10 +1,11 @@
 import sqlalchemy as sa
-# from sqlalchemy import create_engine, MetaData
 from bussiness.persistence.base import Base, metadata_obj, engine
+# from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import Session
 from bussiness.shop.author import Author
 from bussiness.shop.category import Category
 from bussiness.shop.product import Product, Book
+from bussiness.shop.image import Image
 from bussiness.persistence.repositories.categories_repository import CategoriesRepository
 from bussiness.persistence.repositories.products_repository import ProductsRepository
 from bussiness.persistence.repositories.authors_repository import AuthorsRepository
@@ -47,21 +48,28 @@ def create_sample_data(session):
 
     # Save stuff
     authors_repository.addAll([author1, author2, author3, author4])
-    authors_repository.commit()
     categories_repository.addAll([category1, category2, category3, category4, category5])
-    categories_repository.commit()
     books_repository.addAll([book1, book2, book3, book4])
-    books_repository.commit()
+
+def get_book_and_author():
+    authors_repository = AuthorsRepository(session)
+    books_repository = BooksRepository(session)
+    book = books_repository.get(**{'id': 1})[0]
+    authors = authors_repository.get_from_book_id(book.id)
+    print("--------------------")
+    print(book.__to_dict__())
+    for author in authors:
+        print(author.__to_dict__())
+    print("--------------------")
+    
 
 # Main
 
 if '__main__' == __name__:
 
-    #string = "mysql+mysqlconnector://root:13082001@127.0.0.1:3306/wc_libreria"
-
-    #engine = create_engine(string, echo=True, future=True)
-    #metadata = MetaData(engine)
-    metadata_obj.create_all()
+    Base.metadata.create_all(bind=engine)
 
     with Session(engine) as session:    
-        create_sample_data(session)
+        # create_sample_data(session)
+        get_book_and_author()
+        pass

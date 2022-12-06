@@ -1,0 +1,178 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Roboto+Slab:wght@300;400;700&display=swap');
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colors */
+:root {
+    --primary-color: #9B4F2C;
+    --secondary-color: #6c3c1f;
+    --alternate-color: #9b2c32;
+    --error-color: #d91414;
+    --black: #292522;
+    --black-75: #5f5c5a;
+    --black-50: #959291;
+    --black-25: #c9c8c8;
+    --black-10: #eaeae9;
+    --black-5: #f4f4f4;
+    --white: #f8f8f8;
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.primary {
+    color: var(--primary-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.secondary {
+    color: var(--secondary-color);
+}
+
+.bg-primary-gradient {
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* TODO Ver si no van al revés*/
+}
+
+.bg-alternate {
+    background-color: var(--alternate-color);
+}
+
+.alternate {
+    color: var(--alternate-color);
+}
+
+.bg-alternate-gradient {
+    background: linear-gradient(90deg, var(--alternate-color) 0%, var(--primary-color) 100%); /* TODO Ver si no van al revés */
+}
+
+.bg-black {
+    background-color: var(--black);
+}
+
+.black {
+    color: var(--black);
+}
+
+.bg-black-75 {
+    background-color: var(--black-75);
+}
+
+.black-75 {
+    color: var(--black-75);
+}
+
+.bg-black-50 {
+    background-color: var(--black-50);
+}
+
+.black-50 {
+    color: var(--black-50);
+}
+
+.bg-black-25 {
+    background-color: var(--black-25);
+}
+
+.bg-black-10 {
+    color: var(--black-10);
+}
+
+.bg-black-5 {
+    background-color: var(--black-5);
+}
+
+.bg-white {
+    background-color: var(--white);
+}
+
+.bg-error {
+    background-color: var(--error-color);
+}
+
+.error {
+    color: var(--error-color);
+}
+
+.white {
+    color: var(--white); 
+}
+
+/* Styles */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif';
+    font-style: normal;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0 !important;
+}
+
+h1 {
+    font-size: 49px;
+    line-height: 67px;
+}
+
+h2 {
+    font-size: 39px;
+    line-height: 53px;
+}
+
+h3 {
+    font-size: 31px;
+    line-height: 42px;
+    font-weight: normal;
+}
+
+h4 {
+    font-size: 25px;
+    line-height: 34px;
+}
+
+h5 {
+    font-size: 20px;
+    line-height: 27px;
+}
+
+h6 {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+p {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: var(--black-75);
+    text-align: left;
+}
+
+a {
+    font-family: 'Roboto Slab';
+}
+
+.roboto-slab {
+    font-family: 'Roboto Slab';
+}
+
+.noto-serif {
+    font-family: 'Noto Serif';
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}

@@ -4,6 +4,9 @@ import "./normalize.css";
 import Sidebar from "./components/Sidebar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import Restaurante from "./pages/Restaurante";
+import About from "./pages/About";
+import Tienda from "./pages/Tienda";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -22,6 +25,9 @@ function App() {
       <div className="text-center">
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/restaurante" element={<Restaurante/>}/>
+          <Route path="/tienda" element={<Tienda/>}/>
+          <Route path="/sobre-nosotros" element={<About/>}/>
         </Routes>
       </div>
       {<Footer/>}

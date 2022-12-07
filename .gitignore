@@ -1,1 +1,4 @@
 **.pyc
+
+# Local Netlify folder
+.netlify

@@ -6,16 +6,16 @@ import { FaFacebook, FaInstagram, FaTwitter, FaUser } from "react-icons/fa";
 
 function Header() {
   return (
-    <header className='bg-white'>
-        <div className='flex justify-between items-center mx-4'>
+    <header className='bg-white z-50'>
+        <div className='flex justify-between items-center mx-4 z-50'>
             <HeaderSocialIcons/>
-            <div className='flex justify-center items-start'>
-                <div className='flex justify-end items-start'>
+            <div className='flex justify-center items-start z-50'>
+                <div className='flex justify-end items-start z-50'>
                     <HeaderNavButton link="/restaurante" name="Restaurante"/>
                     <HeaderNavButton link="/tienda" name="Tienda online"/>
                 </div>
                 <HeaderLogo/>
-                <div className='flex justify-start items-start'>
+                <div className='flex justify-start items-start z-50'>
                     <HeaderNavButton className="basis-full" link="/sobre-nosotros" name="Sobre nosotros"/>
                     <HeaderNavButton className="basis-full" link="/contacto" name="Contacto"/>
                 </div>
@@ -46,15 +46,16 @@ function HeaderSocialIcon({link, icon}) {
 }
 
 function HeaderNavButton({link, name}) {
-    const location = useLocation();
-    /* let isActive = location === link; */
-    let isActive = false;
-    /* console.log(location); */
+    const location = useLocation().pathname;
+    let isActive = location === link;
+    console.log(location + " = " + link);
+    console.log(isActive);
 
     return(
-        <Link to={link} className={`mx-5 w-40 h-14 text-center noto-serif font-bold text-black flex flex-col justify-center ${isActive? "text-white black" : ""} hover:bg-black hover:text-white transition`}>
+        <Link to={link} className={`mx-5 w-40 h-14 text-center noto-serif font-bold text-black flex flex-col justify-center hover:bg-black hover:text-white transition relative z-30`}>
             {/* En ralidad no va fondo negro, si no la banderita. El fondo negro va cuando está en hover */}
             {name}
+            {isActive? activeBar(): null}
         </Link>
     );
 }
@@ -79,6 +80,16 @@ function HeaderLogIn() {
                 <FaUser/>
                 <p className='black ml-2'>Iniciar Sesión</p>
             </Link>
+        </div>
+    );
+}
+
+function activeBar() {
+    return (
+        <div className="flex w-full absolute bottom-0 z-0">
+            <div className='h-1 w-1/3' style={{backgroundColor: "000000"}}/>
+            <div className='h-1 w-1/3' style={{backgroundColor: "D60000"}}/>
+            <div className='h-1 w-1/3' style={{backgroundColor: "F7C800"}}/>
         </div>
     );
 }

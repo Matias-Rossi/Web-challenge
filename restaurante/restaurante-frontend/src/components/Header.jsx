@@ -48,8 +48,6 @@ function HeaderSocialIcon({link, icon}) {
 function HeaderNavButton({link, name}) {
     const location = useLocation().pathname;
     let isActive = location === link;
-    console.log(location + " = " + link);
-    console.log(isActive);
 
     return(
         <Link to={link} className={`mx-5 w-40 h-14 text-center noto-serif font-bold text-black flex flex-col justify-center hover:bg-black hover:text-white transition relative z-30`}>

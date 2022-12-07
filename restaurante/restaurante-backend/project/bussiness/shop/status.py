@@ -1,0 +1,11 @@
+from enum import Enum
+
+class Status(Enum):
+    PAYMENT_PENDING = 1
+    WAITING_RESTAURANT_CONFIRMATION = 2
+    REJECTED = 3
+    WAITING_ORDER_TO_BE_PREPARED = 4
+    WAITING_TO_BE_DELIVERED = 5
+    IN_TRANSIT = 6
+    DELIVERED = 7
+    CANCELLED = 8

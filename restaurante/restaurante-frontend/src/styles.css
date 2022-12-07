@@ -83,7 +83,7 @@
 }
 
 .bg-black-10 {
-    color: var(--black-10);
+    background-color: var(--black-10);
 }
 
 .bg-black-5 {
@@ -167,6 +167,11 @@ a {
 
 .noto-serif {
     font-family: 'Noto Serif';
+}
+
+input::placeholder, input::-ms-input-placeholder {
+    color: var(--black) !important; 
+    opacity: 1;
 }
 
 * {

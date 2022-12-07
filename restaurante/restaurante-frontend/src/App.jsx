@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Restaurante from "./pages/Restaurante";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Tienda from "./pages/Tienda";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/restaurante" element={<Restaurante/>}/>
           <Route path="/tienda" element={<Tienda/>}/>
           <Route path="/sobre-nosotros" element={<About/>}/>
+          <Route path="/contacto" element={<Contact/>}/>
         </Routes>
       </div>
       {<Footer/>}

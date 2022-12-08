@@ -33,6 +33,21 @@ class Product(Base):
         self.is_recommended = is_recommended
         self.category = category
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "description": self.description,
+            "price": self.price,
+            "image": self.image,
+            "discount_price": self.discount_price,
+            "is_discount": self.is_discount,
+            "is_new": self.is_new,
+            "is_active": self.is_active,
+            "is_recommended": self.is_recommended,
+            "category": self.category.to_dict()
+        }
+
 
 """ 
 book_author = Table(

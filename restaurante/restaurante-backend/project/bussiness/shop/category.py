@@ -13,3 +13,10 @@ class Category(Base):
     def __init__(self, name: str, description: str):
         self.name = name
         self.description = description
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "description": self.description
+        }

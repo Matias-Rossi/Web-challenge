@@ -1,5 +1,5 @@
 export const config = {
-    "backend_url": "http://127.0.0.1:8000",
+    "backend_url": "http://127.0.0.1:5000",
     "social_media": {
         "facebook": "https://www.facebook.com/BratwurstArgentina/",
         "instagram": "https://www.instagram.com/extrawurst_argentina/",

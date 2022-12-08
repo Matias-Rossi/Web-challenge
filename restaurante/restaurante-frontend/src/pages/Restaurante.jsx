@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import FlatButton from '../components/FlatButton';
 import { FaArrowRight } from 'react-icons/fa';
 import exterior_2 from '../assets/images/exterior_2.png';
-import { RestaurantInformation } from './RestaurantInformation';
+import { RestaurantInformation } from '../components/RestaurantInformation';
 
 function Restaurante() {
   return (

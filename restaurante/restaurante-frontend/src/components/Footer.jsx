@@ -1,15 +1,20 @@
 import React from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import { FaPhone, FaWhatsapp } from 'react-icons/fa'
 import white_logo from "../assets/images/white_logo.png"
 import SocialLinks from './SocialLinks'
 
+
 function Footer({hideMap = false}) {
+    const location = useLocation().pathname;
+    
+
   return (
     <footer className='bg-black'>
         <div className="py-4 flex justify-center gap-5">
             <FooterSocialLinks/>
             <Divider/>
-            <FooterSiteMap/>
+            <FooterSiteMap location={location}/>
             <Divider/>
             <FooterContact/>
             {!hideMap?<FooterMap/>:null}
@@ -40,19 +45,31 @@ function Divider() {
     );
 }
 
-function FooterSiteMap() {
-    /* TODO Agregar soporte para página activa (bold) */
+function FooterSiteMap({location}) {
+    const scrollToTop = () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
     return (
         <div className="flex flex-col justify-center items-start gap-2 grow-0 self-stretch">
-            <a className='text-white text-xs hover:underline font-bold' href="">Inicio</a>
-            <a className='text-white text-xs hover:underline' href="">Restaurante</a>
-            <a className='text-white text-xs hover:underline' href="">Tienda online</a>
-            <a className='text-white text-xs hover:underline' href="">Sobre nosotros</a>
-            <a className='text-white text-xs hover:underline' href="">Contacto</a>
-            <a className='text-white text-xs hover:underline' href="">Términos y condiciones</a>
-            <a className='text-white text-xs hover:underline' href="">Volver a la cima</a>
+            <FooterNavLink to="/" text="Inicio" currentRoute={location}/>
+            <FooterNavLink to="/restaurante" text="Restaurante" currentRoute={location}/>
+            <FooterNavLink to="/tienda" text="Tienda online" currentRoute={location}/>
+            <FooterNavLink to="/sobre-nosotros" text="Sobre nosotros" currentRoute={location}/>
+            <FooterNavLink to="/contacto" text="Contacto" currentRoute={location}/>
+            <FooterNavLink to="/terminos-y-condiciones" text="Términos y condiciones" currentRoute={location}/>
+            <a className='text-white text-xs hover:underline hover:cursor-pointer' onClick={scrollToTop}>Volver a la cima</a>
         </div>
     )
+}
+
+function FooterNavLink({to, text, currentRoute}) {
+    const isActive = currentRoute === to;
+
+    return(
+        <NavLink className={`text-white text-xs hover:underline ${isActive? "font-bold":""}`} to={to}>{text}</NavLink>
+    );
+
 }
 
 function FooterContact() {

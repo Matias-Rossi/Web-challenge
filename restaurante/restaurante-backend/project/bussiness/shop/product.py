@@ -3,6 +3,8 @@ from sqlalchemy.orm import relationship
 from ..persistence.base import Base, metadata_obj
 from .category import Category
 
+# TODO: Agregar estadística de ventas, soporte para más imágenes y estado de "agotado"
+
 class Product(Base):
     __tablename__ = 'products'
     Base.metadata

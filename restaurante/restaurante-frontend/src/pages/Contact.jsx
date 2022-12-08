@@ -1,12 +1,12 @@
 import React from 'react'
-import { RestaurantInformation } from './RestaurantInformation'
+import { RestaurantInformation } from '../components/RestaurantInformation'
 import { TextField } from '../components/TextField';
 import PrimaryButton from '../components/PrimaryButton';
 import {FaPaperPlane} from 'react-icons/fa'
 
 function Contact() {
   return (
-    <main className='flex flex-col'>
+    <main className='flex flex-col' style={{height: "calc(100vh - 275px)"}}>
         <div className="my-16 mx-40 grid grid-cols-2 gap-14 h-full flex-grow">
             <div className="flex flex-col justify-start items-start px-14 gap-10">
                 <h2>Contáctenos</h2>
@@ -14,7 +14,7 @@ function Contact() {
                 <RestaurantInformation />
             </div>
             <form action="" method="post" className='mr-40'>
-                <div className="grid grid-cols-2 grid-rows-5 gap-y-0 gap-x-9 flex-grow">
+                <div className="grid grid-cols-2 grid-rows-5 gap-y-4 gap-x-9 flex-grow">
                     <TextField id="name" label="Nombre"  />
                     <TextField id="phone" label="Teléfono"  />
                     <TextField id="email" label="Email" className='col-span-2' type='email' />

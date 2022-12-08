@@ -1,12 +1,13 @@
-import React from 'react'
-import black_logo from "../assets/images/black_logo.png";
+import React, { useState } from 'react'
+import black_logo from "~/assets/images/black_logo.png";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaFacebook, FaInstagram, FaTwitter, FaUser } from "react-icons/fa";
+import LogInMenu from '~/components/input/LogInMenu';
 
 function Header() {
   return (
-    <header className='bg-white z-50'>
+    <header className='bg-white z-50 sticky top-0'>
         <div className='flex justify-between items-center mx-4 z-50'>
             <HeaderSocialIcons/>
             <div className='flex justify-center items-start z-50'>
@@ -72,12 +73,25 @@ function HeaderLogo() {
 }
 
 function HeaderLogIn() {
+    const [loginMenu, setLoginMenu] = useState("hidden")
+
+    const switchLoginMenu = () => {
+        if (loginMenu === "hidden") {
+            console.log("Login menu now showing");
+            setLoginMenu("block")
+        } else {
+            console.log("Login menu now hidden");
+            setLoginMenu("hidden")
+        }
+    }
+
     return (
-        <div className='h-full ml-auto flex-1'>
-            <Link to="/login" className="h-12 noto-serif font-bold black flex items-center justify-end">
+        <div className='h-full ml-auto flex-1 relative'>
+            <button to="" className="h-12 noto-serif font-bold black flex items-center justify-end" onClick={switchLoginMenu}>
                 <FaUser/>
                 <p className='black ml-2'>Iniciar Sesión</p>
-            </Link>
+            </button>
+            <LogInMenu className={`${loginMenu} absolute`}/>
         </div>
     );
 }

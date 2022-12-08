@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaMapPin, FaClock, FaBook, FaPhone, FaWhatsapp } from 'react-icons/fa';
-import { VerticalDivider } from './Restaurante';
+import { VerticalDivider } from '../pages/Restaurante';
 
 export function RestaurantInformation() {
     return (

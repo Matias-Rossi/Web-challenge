@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ProductGridItem from "../components/ProductGridItem";
+import ProductGridItem from "~/components/ProductGridItem";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { config } from "../data/config";
 
@@ -66,7 +66,7 @@ function CategorySelector({
   return (
     <li
       className={`hover:cursor-pointer font-bold ${
-        selectedCategory == categoryId ? "text-secondary" : "text-black-50"
+        selectedCategory == categoryId ? "text-primary" : "text-black-50"
       }`}
       onClick={onClick}
     >
@@ -76,7 +76,7 @@ function CategorySelector({
 }
 
 function VerticalDivider() {
-  return <div className="w-px self-stretch bg-black" />;
+  return <div className="w-0.5 self-stretch bg-black" />;
 }
 
 function ProductGrid({ products }) {

@@ -1,10 +1,10 @@
 import React from 'react'
 
-function FlatButton({text, icon, onClick ,...props}) {
+function FlatButton({text, icon, onClick, pClassName="" ,...props}) {
   return (
     <button className='flex gap-2 items-center' onClick={onClick}>
         <VerticalDivider/>
-        <p className='text-black '>{text}</p>
+        <p className={'text-black ' + pClassName}>{text}</p>
         {icon}
     </button>
 

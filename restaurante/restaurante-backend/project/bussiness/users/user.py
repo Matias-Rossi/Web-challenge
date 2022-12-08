@@ -9,53 +9,42 @@ Base = declarative_base()
 
 class User(Base):
     __tablename__ = 'user'
+    __mapper_args__={
+        "polymorhpic_on": "role",
+        "polymorphic_identity": "user",
+    }
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False)
+    email = Column(String(100), nullable=False)
     password = Column(String(50), nullable=False)
     role = Column(Enum(Role))
 
-    def __init__(self, name: str, password: str,role: Role):
+    def __init__(self, name: str, email:str, password: str, role: Role):
+        self.email = email
         self.name = name
         self.password = password
         self.role = role
 
 class CustomerAccount(User):
-    __tablename__ = 'customer_accounts'
-    __mapper_args__={'concrete':True}
-    # User columns
-    id = Column(Integer, primary_key=True)
-    name = Column(String(50), nullable=False)
-    password = Column(String(50), nullable=False)
-    role = Column(Enum(Role))
+    __mapper_args__={'polymprphic_identity':'customer'}
     
     # CustomerAccount columns
-    email = Column(String(50), nullable=False)
     phone = Column(String(50), nullable=False)
     address_id = Column(Integer, ForeignKey('addresses.id'))
     
     # Transient attributes
     orders = relationship("Order", back_populates="user")
 
-    def __init__(self, name: str, password: str, email: str, phone: str, address: Address):
-        super().__init__(name, password, Role.CUSTOMER)
-        self.email = email
+    def __init__(self, name: str, email: str, password: str, phone: str):
         self.phone = phone
-        self.address = address    
+        super().__init__(name, email, password, Role.CUSTOMER)
 
 class SpecialAccount(User):
-    __tablename__ = 'special_accounts'
-    __mapper_args__={'concrete':True}
-    # User columns
-    id = Column(Integer, primary_key=True)
-    name = Column(String(50), nullable=False)
-    password = Column(String(50), nullable=False)
-    role = Column(Enum(Role))
-    
-    # SpecialAccount columns
-    username = Column(String(50), nullable=False)
+    __mapper_args__={
+        'polymorphic_identity':'special'
+    }
 
-    def __init__(self, name: str, password: str, username: str, role: Role):
+    def __init__(self, name: str, email:str, password: str, role: Role):
         if role is not Role.ADMIN and role is not Role.EMPLOYEE:
             raise ValueError("Role must be ADMIN or EMPLOYEE")
-        super().__init__(name, password, role)
-        self.username = username
+        super().__init__(name, email, password, role)

@@ -17,7 +17,7 @@ function Contact() {
                 <div className="grid grid-cols-2 grid-rows-5 gap-y-4 gap-x-9 flex-grow">
                     <TextField id="name" label="Nombre"  />
                     <TextField id="phone" label="Teléfono"  />
-                    <TextField id="email" label="Email" className='col-span-2' type='email' />
+                    <TextField id="email-contacto" label="Email" className='col-span-2' type='email' />
                     <div className="flex flex-col items-start w-full col-span-2 roboto-slab gap-2 row-span-2">
                         <label htmlFor="message">Mensaje</label>
                         <textarea name="message" id="message" className=' w-full bg-black-10 rounded p-2 text-black' placeholder='Mensaje' style={{minHeight: "100px"}}></textarea>

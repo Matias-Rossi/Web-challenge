@@ -1,14 +1,14 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Float, Boolean, Table
-from sqlalchemy.ext.declarative import declarative_base
+#from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+from bussiness.persistence.base import Base
 
-Base = declarative_base()
 
 class Address(Base):
     __tablename__ = 'addresses'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-    user = relationship("User", back_populates="addresses")
+    user = relationship("CustomerAccount", back_populates="addresses", foreign_keys=[user_id])
     street = Column(String(100))
     street_number = Column(Integer)
     localidad_neighborhood = Column(String(100))

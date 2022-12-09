@@ -2,10 +2,18 @@ import sqlalchemy as sa
 from bussiness.persistence.base import Base, metadata_obj, engine
 # from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import Session
+# Model classes
 from bussiness.shop.category import Category
 from bussiness.shop.product import Product
+from bussiness.shop.order import Order
+from bussiness.shop.payment_method import PaymentMethod
+from bussiness.users.user import CustomerAccount, SpecialAccount
+from bussiness.users.roles import Role
+
+# Repos
 from bussiness.persistence.repositories.categories_repository import CategoriesRepository
 from bussiness.persistence.repositories.products_repository import ProductsRepository
+from bussiness.persistence.repositories.users_repository import UsersRepository
 
 import pymysql
 pymysql.install_as_MySQLdb()
@@ -18,6 +26,7 @@ def create_sample_data(session):
     # Instantiate repositories
     categories_repository = CategoriesRepository(session)
     products_repository = ProductsRepository(session)
+    users_repository = UsersRepository(session)
     
     # Create categories
     salchichas = Category("Salchichas", "Salchichas")
@@ -31,11 +40,17 @@ def create_sample_data(session):
     sauerkraut = Product("Sauerkraut", "Sauerkraut", 650, "https://static.wixstatic.com/media/fb5415_f4317ff925ac4df39464c21a17d67e2c~mv2.jpg/v1/fill/w_225,h_337,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/fb5415_f4317ff925ac4df39464c21a17d67e2c~mv2.jpg", None, False, False, True, False, salsas_y_mas)
     silberweizen = Product("Silberweizen - cerveza de trigo rubia artesanal", "Cerveza de trigo rubia artesanal", 900, "https://static.wixstatic.com/media/fb5415_5adeec749bca46509fdb4c39344ae3a0~mv2.jpg/v1/fill/w_225,h_337,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/fb5415_5adeec749bca46509fdb4c39344ae3a0~mv2.jpg", None, False, False, True, False, salsas_y_mas)
 
+    # Create users
+    customer = CustomerAccount("Pablo Rodríguez", "prodriguez@gmail.com", "123", "45031234")
+    worker = SpecialAccount("Pedro Mozo", "servicio1", "servicio1", Role.EMPLOYEE)
+    admin = SpecialAccount("Juan Pérez", "admin", "admin", Role.ADMIN)
+
     print('persistiendo')
 
     # Save stuff
     categories_repository.addAll([salchichas, salsas_y_mas])
     products_repository.addAll([combo_ahumado, thueringer_bratwuerste, bayersiche_brezel, leberkaese, sauerkraut, silberweizen])
+    users_repository.addAll([customer, worker, admin])
 
 """ def get_book_and_author():
     authors_repository = AuthorsRepository(session)

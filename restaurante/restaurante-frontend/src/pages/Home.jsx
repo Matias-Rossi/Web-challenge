@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import hero_extrawurst from "../assets/images/hero_extrawurst.png";
 import salchichas_1 from "../assets/images/salchichas_1.png";
 import exterior_1 from "../assets/images/exterior_1.png";
-import PrimaryButton from "../components/PrimaryButton";
+import PrimaryButton, { PrimaryButtonLink } from "../components/PrimaryButton";
 import { FaArrowRight } from "react-icons/fa";
 import ContentBlock from "../components/ContentBlock";
 import FlatButton from "../components/FlatButton";
@@ -121,15 +121,15 @@ function HeroHome() {
           </p>
         </div>
         <div className="mt-11 flex gap-14 justify-center">
-          <PrimaryButton
+          <PrimaryButtonLink
             text="Restaurante"
             icon={<FaArrowRight className="text-white" />}
-            link="/restaurante"
+            to="/restaurante"
           />
-          <PrimaryButton
+          <PrimaryButtonLink
             text="Tienda online"
             icon={<FaArrowRight className="text-white" />}
-            link="/tienda"
+            to="/tienda"
             isBold={true}
           />
         </div>

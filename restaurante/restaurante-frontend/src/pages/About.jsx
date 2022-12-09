@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 import menu_completo from '../assets/images/menu_completo.png'
-import PrimaryButton from '../components/PrimaryButton'
+import {PrimaryButtonLink} from '../components/PrimaryButton'
 import ContentBlock from '../components/ContentBlock'
 import Spacer from '../components/Spacer'
 import strudel from '../assets/images/strudel.png'
@@ -27,7 +27,7 @@ function About() {
                     <h3>Quiénes somos</h3>
                 </div>
                 <p className='w-3/4'>Comenzamos en 2013 en el barrio de Constitución con un objetivo en mente, traer maravillosos y únicos gustos de Alemania a Buenos Aires. Hoy estamos ubicados en Retiro y continuamos con la misma meta, juntando gente y ofreciéndoles lo mejor que tenemos.<br/><br/>EXTRAWURST - Bratwurst Argentina es sinónimo de calidad, frescura y sabor. Elaboramos nuestros productos sin aditivos ni conservantes de ninguna clase. Utilizamos las materias primas y especias más frescas. Todo lo que hacemos lo realizamos de modo tradicional, a mano y con amor.</p>
-                <PrimaryButton text="Sobre nuestro restaurante" icon={<FaArrowRight className='text-white'/>} onClick={() => navigate('/restaurante')}/>
+                <PrimaryButtonLink text="Sobre nuestro restaurante" icon={<FaArrowRight className='text-white'/>} to='/restaurante'/>
             </ContentBlock>
         </div>
         <Spacer/>

@@ -36,7 +36,9 @@ function LogInMenu({ className }) {
           setCredentialsError(true);
           return;
         } else if (response.status === 200) {
+          //Success
           setCredentialsError(false);
+          //console.log(response.dat)
           window.location.reload(false);
           return response.text();
         }

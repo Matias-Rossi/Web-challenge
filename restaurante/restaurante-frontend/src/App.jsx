@@ -10,17 +10,21 @@ import Contact from "./pages/Contact";
 import Tienda from "./pages/Tienda";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { config } from "~/data/config";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
 
+  
+  const [isOpen, setIsOpen] = useState(false);
+  
   const toggle = () => {
     setIsOpen(!isOpen);
   }
 
+
   return (
     <>
-      {<Header toggle={toggle} />}
+      {<Header toggle={toggle}/>}
       {/* <Sidebar isOpen={isOpen} toggle={toggle}/> */}
       
       <div className="text-center">

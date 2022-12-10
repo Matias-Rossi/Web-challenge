@@ -73,6 +73,13 @@ async def login():
 
 
     return redirect("/")
+
+@app.post('/isLoggedIn')
+async def isLoggedIn():
+    if session.get('username') is not None:
+        return "Logged in", 200
+    else:
+        return "Not logged in", 401
     
 @app.post('/logout')
 async def logout():
